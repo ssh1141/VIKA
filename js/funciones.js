@@ -1,53 +1,40 @@
 
-/*
 // Funcion precio. Segun el codigo de prenda, dispara un alert con el precio de la misma.
-let precioPrenda = 0
-const iva21 = 0.21
 
-function precio(codigo) {
-    switch (codigo) {
-        case 10:
-            alert("El precio de la remera 'Mar' es $10500 (Con IVA)")
-            precioPrenda = 10500
-            break
-        case 20:
-            alert("El precio del pantalon 'Lara' es de $20.100 (Con IVA)")
-            precioPrenda = 20100
-            break
-        case 30:
-            alert("El precio del top 'Juana' es de $7500 (Con IVA)")
-            precioPrenda = 7500
-            break
-        case 40:
-            alert("El precio del chaleco 'Tojo' es de $ 25000 (Con IVA)")
-            precioPrenda = 25000
-            break
-        case 50:
-            alert("El precio del cinturon 'Ari' es de $ 5000 (Con IVA)")
-            precioPrenda = 5000
-            break
-        default:
-            alert("¡Intentalo de nuevo ingresando un código válido!")
-            return false
 
+function consultarPrenda() {
+    let codigo = parseInt(prompt("Ingrese el codigo de la prenda a consultar"))
+    let resultado = productos.find((producto) => producto.id === parseInt(codigo))
+
+    if (resultado === undefined) {
+        alert("No se encontro el resultado que esperabas, intente nuevamente con otro codigo.")
+    } else {
+        alert("La prenda: " + resultado.nombre + " " + resultado.descripcion + " tiene un valor de: " + resultado.precio)
+        return resultado
     }
-    return true
 }
 
 
 function comprarPrenda() {
-    let codigoPrenda
+    let respuesta
+    let resultado
     do {
-       codigoPrenda = parseInt(prompt("Ingrese el código de la prenda que quiera consultar:\n10. Remera 'Mar'\n20. Pantalón 'Lara'\n30. Top 'Juana'\n40. Chaleco 'Tojo'\n50. Cinturón 'Ari'\n Debera abrir la consola para una mejor experiencia."))
-    } while (!precio(codigoPrenda))
-
-    let respuesta = confirm("¿Desea realizar la compra?")
-    if (respuesta === true) {
-        facturar()
-    }
+        resultado = consultarPrenda()
+        respuesta = confirm("¿Desea continuar con la compra?")
+        if (respuesta === true) {
+            carrito.push(resultado)
+        }
+    } while (respuesta === true && resultado)
+    console.log(carrito) 
 }
 
+//const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+//console.log(total)
 
+
+
+
+/*
 function facturar() {
     let consumidor
     do {
@@ -84,7 +71,7 @@ function consumidorFinal() {
         "Nombre y Apellido: \n" + nombreYapellido + "\n" +
         "DNI:" + documento + "\n" +
         "Telefono:" + phone + "\n" +
-        "El total de su compra es: $" +  precioPrenda)
+        "El total de su compra es: $" +  prenda.precio)
 }
 
 
@@ -109,8 +96,8 @@ function empresa() {
         "Nombre de Empresa: " + nombreEmpresa + "\n" +
         "CUIT: " + documento + "\n" +
         "Teléfono: " + phone + "\n" +
-        "El total de su compra es: $" + precioPrenda + "\n" +
-        "El total de su compra SIN IVA es: $" + (precioPrenda - (precioPrenda * iva21)))
+        "El total de su compra es: $" + prenda.precio + "\n" +
+        "El total de su compra SIN IVA es: $" + (prenda.precio - (prenda.precio * iva21)))
 
 }
 
