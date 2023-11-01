@@ -1,11 +1,10 @@
 
 // Funcion precio. Segun el codigo de prenda, dispara un alert con el precio de la misma.
-
+/*
 
 function consultarPrenda() {
     let codigo = parseInt(prompt("Ingrese el codigo de la prenda a consultar"))
     let resultado = productos.find((producto) => producto.id === parseInt(codigo))
-
     if (resultado === undefined) {
         alert("No se encontro el resultado que esperabas, intente nuevamente con otro codigo.")
     } else {
@@ -23,14 +22,33 @@ function comprarPrenda() {
         respuesta = confirm("¿Desea continuar con la compra?")
         if (respuesta === true) {
             carrito.push(resultado)
+        }else {
+            calcularTotalCarrito()
         }
     } while (respuesta === true && resultado)
-    console.log(carrito) 
+    return carrito
 }
 
-//const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-//console.log(total)
 
+function calcularTotalCarrito (){
+const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+console.log(total)
+}
+
+function nuevoProductoValidando() {
+    let nombre = prompt("Ingresa nombre del producto:").trim()
+    let importe = prompt("Ingresa el importe del producto:")
+    let categoria = prompt("Ingresa la categoría del producto:").trim()
+
+    let existe = productos.some((producto)=> producto.nombre === nombre.toUpperCase())
+        if (existe) {
+            console.warn("El producto ya existe en el listado.")
+        } else {
+            const nuevoProducto = {id: crearID(), nombre: nombre, importe: importe, categoria: categoria}
+            productos.push(nuevoProducto)
+            console.table(nuevoProducto)
+        }
+}
 
 
 
