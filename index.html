@@ -8,20 +8,18 @@
     <meta name="athor" content="Sasha Soler">
     <meta name="keywords" content="e-commerce,Javascrip">
     <title>VIKA basicss | STORE</title>
-    <!--JavaScript-->
-    <script src="js/index.js"></script>
-    <!--Incorporacion de objetos-->
-    <script src="js/objetos.js"></script>
-    <!--Incorporacion de funciones-->
-    <script src="js/funciones.js"></script>
-    <!--Incorporacion de arrays-->
-    <script src="js/arrays.js"></script>
-    <!--Incorporacion de CSS-->
+    <!--Incorporacion arrchivo js de objetos-->
+    <script defer src="js/objetos.js"></script>
+    <!--Incorporacion  arrchivo js de funciones-->
+    <script defer src="js/funciones.js"></script>
+    <!--Incorporacion arrchivo js dearrays-->
+    <script defer src="js/arrays.js"></script>
+    <!--link CSS-->
     <link rel="stylesheet" href="css/style.css">
-     <!--Google Fonts-->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <!--Incorporacion Bootsrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -35,7 +33,7 @@
     <nav class="navbar fixed-top navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img  src="img\logo-vika.svg" width="100" alt="Logo de la pagina">
+                <img src="img\logo-vika.svg" width="100" alt="Logo de la pagina">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -70,68 +68,71 @@
         </div>
     </nav>
 
-
+    <!--seccion Carrusel -->
     <section id="carrusel">
         <div id="carrusel-1" class="carousel slide carousel-fade">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img id="imagen-carrusel" src="img\prendas\43.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img id="imagen-carrusel"  src="img\prendas\3.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img id="imagen-carrusel" src="img\prendas\14.jpg" class="d-block w-100" alt="...">
-              </div>
+                <div class="carousel-item active">
+                    <img id="imagen-carrusel" src="img\Hello.jpg" class="d-block w-100" alt="imagen con cartel de instrucciones">
+                </div>
+                <div class="carousel-item">
+                    <img id="imagen-carrusel" src="img\prendas\14.jpg" class="d-block w-100" alt="musculosa blanca y beige morley">
+                </div>
+                <div class="carousel-item">
+                    <img id="imagen-carrusel" src="img\prendas\3.jpg" class="d-block w-100" alt="musculosa negra y gris">
+                </div>
+                <div class="carousel-item">
+                    <img id="imagen-carrusel" src="img\prendas\43.jpg" class="d-block w-100" alt="musculosa estampada">
+                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carrusel-1" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carrusel-1" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
             </button>
-          </div>
+        </div>
     </section>
-
-    <section class="productos" >
-            <div class="carta-producto">
-                <div class="img-producto">
-                    <img src="img\prendas\23.jpg">
-                </div>
-                <div class="info-producto">
-                    <h5>BIKER MALVA</h5>
-                    <h6>$4500</h6>
-                </div>
+    <!--seccion Productos -->
+    <section class="productos">
+        <div class="carta-producto">
+            <div class="img-producto">
+                <img src="img\prendas\23.jpg">
             </div>
-            <div class="carta-producto">
-                <div class="img-producto">
-                    <img src="img\prendas\16.jpg">
-                </div>
-                <div class="info-producto">
-                    <h5>MUSCULOSA KIRA III</h5>
-                    <h6>$4500</h6>
-                </div>
+            <div class="info-producto">
+                <h5>BIKER MALVA</h5>
+                <h6>$4500</h6>
             </div>
-            <div class="carta-producto">
-                <div class="img-producto">
-                    <img src="img\prendas\37.jpg">
-                </div>
-                <div class="info-producto">
-                    <h5>MUSCULOSA LEOPARDA</h5>
-                    <h6>$3000</h6>
-                </div>
+        </div>
+        <div class="carta-producto">
+            <div class="img-producto">
+                <img src="img\prendas\16.jpg">
             </div>
-            <div class="carta-producto">
-                <div class="img-producto">
-                    <img src="img\prendas\21.jpg" alt="">
-                </div>
-                <div class="info-producto">
-                    <h5>REMERA INDIANA</h5>
-                    <h6>$5000</h6>
-                </div>
+            <div class="info-producto">
+                <h5>MUSCULOSA KIRA III</h5>
+                <h6>$4500</h6>
             </div>
+        </div>
+        <div class="carta-producto">
+            <div class="img-producto">
+                <img src="img\prendas\37.jpg">
+            </div>
+            <div class="info-producto">
+                <h5>MUSCULOSA LEOPARDA</h5>
+                <h6>$3000</h6>
+            </div>
+        </div>
+        <div class="carta-producto">
+            <div class="img-producto">
+                <img src="img\prendas\21.jpg" alt="">
+            </div>
+            <div class="info-producto">
+                <h5>REMERA INDIANA</h5>
+                <h6>$5000</h6>
+            </div>
+        </div>
     </section>
 
     <footer>

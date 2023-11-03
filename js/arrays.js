@@ -14,6 +14,9 @@ productos.push(new Prendas(4661, "BANDO GINEBRA", "CON FRUNCE Y LAZO AL COSTADO"
 
 let carrito = []
 
+
+
+//Array que usare mas adelante
 const usuarios = [{ nombre: "Sasha", apellido: "Soler", dni: 42771143, email: "sashsoler7@gmail.com" },
 { nombre: "Juana", apellido: "Cofone", dni: 38456856, email: "cofonejuana@gmail.com" },
 { nombre: "Rocio", apellido: "Cofone", dni: 43125478, email: "rociocofone@gmail.com" },
