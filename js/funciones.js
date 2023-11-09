@@ -10,7 +10,7 @@ function consultarPrenda() {
     }
 }
 
-
+/*
 function comprarPrenda() {
     let respuesta
     let resultado
@@ -25,6 +25,22 @@ function comprarPrenda() {
     } while (respuesta === true && resultado)
     return carrito
 }
+*/
+  function comprarPrenda() {
+     let resultado = consultarPrenda()
+     let respuesta = confirm("¿Desea realizar la compra?")
+
+     if (respuesta === true && resultado) {
+        carrito.push(resultado)
+
+        let respuesta = confirm("¿Deseas elegir otra prenda?")
+        if (respuesta === true) {
+            comprarPrenda()
+        }else {
+             calcularTotalCarrito()
+        }
+     }
+    }
 
 
 function calcularTotalCarrito() {
