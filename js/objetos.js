@@ -1,5 +1,5 @@
 class Prendas {
-    constructor(id,nombre, descripcion, color, talle,categoria, precio, stock) {
+    constructor(id,nombre, descripcion, color, talle,categoria, precio, stock,imagen) {
         this.id = parseInt(id)
         this.nombre = nombre
         this.descripcion = descripcion
@@ -8,7 +8,7 @@ class Prendas {
         this.categoria = categoria 
         this.precio = parseFloat(precio)
         this.stock = parseInt(stock)
-        this.vendido = false
+        this.imagen = imagen
     }
 }
 
