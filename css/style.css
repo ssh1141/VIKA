@@ -53,15 +53,13 @@ h5, h6 {
 button {
     background-color: transparent;
     border: none;
-    display: flex;
-    text-align: center;
-
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+   /*background-color: black;*/
+    color: brown;
 }
+
 
 @media screen and (max-width:767px) {
     .navbar {

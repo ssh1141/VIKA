@@ -8,11 +8,11 @@
     <meta name="athor" content="Sasha Soler">
     <meta name="keywords" content="e-commerce,Javascrip">
     <title>VIKA basicss | STORE</title>
-    <!--Incorporacion arrchivo js de objetos-->
+    <!--Incorporacion archivo js de objetos-->
     <script defer src="js/objetos.js"></script>
-    <!--Incorporacion  arrchivo js de funciones-->
+    <!--Incorporacion  archivo js de funciones-->
     <script defer src="js/funciones.js"></script>
-    <!--Incorporacion arrchivo js dearrays-->
+    <!--Incorporacion archivo js de arrays-->
     <script defer src="js/arrays.js"></script>
     <!--link CSS-->
     <link rel="stylesheet" href="css/style.css">
@@ -25,6 +25,7 @@
     <!--Incorporacion Bootsrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="img\logo-vika.svg">
 </head>
@@ -37,9 +38,15 @@
             <a class="navbar-brand" href="#">
                 <img src="img\logo-vika.svg" width="100" alt="Logo de la pagina">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            <button id="btn-principal" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
+            </button>
+            <button id="btn-carrito" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+              </svg>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
@@ -64,7 +71,26 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pantalones</a>
                         </li>
-                    </ul>
+                    </ul> 
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">123456</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sin manga</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bikers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pantalones</a>
+                        </li>
+                    </ul> 
                 </div>
             </div>
         </div>
@@ -97,11 +123,14 @@
             </button>
         </div>
     </section>
+
+
+
     <!--seccion Productos -->
     <section  id="productos" class="productos">
-       
     </section>
 
+    
     <footer>
     </footer>
 

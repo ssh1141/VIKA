@@ -1,6 +1,7 @@
 
 const contenedor = document.querySelector("#productos.productos")
 
+/*
 function consultarPrenda() {
     let codigo = parseInt(prompt("Ingrese el codigo de la prenda a consultar"))
     let resultado = productos.find((producto) => producto.id === codigo)
@@ -28,11 +29,13 @@ function comprarPrenda() {
     }
 }
 
+*/
 
 function calcularTotalCarrito() {
     const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
     console.log("El total de su compra es de: $" + total)
 }
+
 
 
 ////////incluyendo DOM para agregar CARDS al document
@@ -62,7 +65,7 @@ function nuevoProducto() {
 */
 
 
-//Con esta funcion creamos la card HTML que luego sera representada en el documnt
+//Con esta funcion creamos la card HTML que luego sera representada en el document
 function crearCardHTML(producto) {
     return `<div class="carta-producto">
             <div class="img-producto">
@@ -73,25 +76,40 @@ function crearCardHTML(producto) {
                 <h6>${producto.precio}</h6>
             </div>
             <div class="button">
-              <button id="boton-añadir"><span class="material-symbols-outlined">
-                shopping_bag
-                </span></button>
+              <button class="boton-añadir" id="${producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+            </svg></button>
             </div>
         </div>`
 }
 
 
 /*
-Con esta maravillosa funcion enlazamos el array creamos a partir de la "consulta" 
--al usuario y con la magia de JS y DOM se vera reflejado en el document
+Enlazamos el array que creamos a partir del evento click 
+y con la magia de JS y DOM se vera reflejado en el document
 */
 
 function cargarProductos() {
     if (productos.length > 0) {
         contenedor.innerHTML = ""
         productos.forEach((producto)=> contenedor.innerHTML += crearCardHTML(producto))
+        activarClick()
     }
 }
+
+function activarClick(){
+ const botonAgregar = document.querySelectorAll("button.boton-añadir")
+  botonAgregar.forEach((boton) => {
+         boton.addEventListener("click", (e) => {
+            const id = parseInt(e.target.id)
+            const productoSeleccionado = productos.find((producto)=> producto.id === id)
+            carrito.push(productoSeleccionado)
+            console.table(carrito)
+         })
+  })
+}
+
+
 
 
 /*
