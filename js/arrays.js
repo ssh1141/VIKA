@@ -12,7 +12,6 @@ productos.push(new Prendas(4659, "TOP M&NTA", "TOP MICROFIBRA CON TIRITAS", "CAM
 productos.push(new Prendas(4660, "TOP KAILIN", "CORTE AMERICANO", "NEGRO", "S", "SIN MANGAS", 4000, 10,"../Entrega1-Soler/img/prendas/42.jpg"))
 productos.push(new Prendas(4661, "BANDO GINEBRA", "CON FRUNCE Y LAZO AL COSTADO", "CAMEL", "S", "SIN MANGAS", 3500, 10,"../Entrega1-Soler/img/prendas/28.jpg"))
 
-
 let carrito = []
 
 
