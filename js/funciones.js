@@ -1,5 +1,6 @@
 
 const contenedor = document.querySelector("#productos.productos")
+const botonAdd = document.querySelector("button#guardar")
 
 function calcularTotalCarrito() {
     const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
@@ -33,24 +34,48 @@ y con la magia de JS y DOM se vera reflejado en el document
 function cargarProductos() {
     if (productos.length > 0) {
         contenedor.innerHTML = ""
-        productos.forEach((producto)=> contenedor.innerHTML += crearCardHTML(producto))
+        productos.forEach((producto) => contenedor.innerHTML += crearCardHTML(producto))
         activarClick()
     }
 }
 cargarProductos()
 
-function activarClick(){
- const botonAgregar = document.querySelectorAll("button.boton-add")
-  botonAgregar.forEach((boton) => {
-         boton.addEventListener("click", (e) => {
+function activarClick() {
+    const botonAgregar = document.querySelectorAll("button.boton-add")
+    botonAgregar.forEach((boton) => {
+        boton.addEventListener("click", (e) => {
             const id = parseInt(e.target.id)
-            const productoSeleccionado = productos.find((producto)=> producto.id === id)
-            carrito.push(productoSeleccionado)
+            const productoSeleccionado = productos.find((producto) => producto.id === id)
+            carrito2 = carrito.push(productoSeleccionado)
             console.table(carrito)
-         })
-  })
+            return carrito
+        })
+    })
 }
 
+
+
+//// JSON y LocalStorage
+
+function recuperarDatosCarrito() {
+    let datosCarrito = JSON.parse(localStorage.getItem("Carrito"))
+    console.log(datosCarrito)
+}
+
+function guardarDatosCarrito() {
+    localStorage.setItem("Carrito", JSON.stringify(carrito))
+}
+
+// agregar un "escuchador" de evento
+botonAdd.addEventListener("click",guardarDatosCarrito)
+
+
+
+
+
+
+//Funcion que usare lugo
+/*
 
 function filtrarProductos() {
     let cat = prompt("Ingresa la categoría de los productos a filtrar:").toUpperCase()
@@ -58,3 +83,4 @@ function filtrarProductos() {
     console.table(resultado)
 }
 
+*/
