@@ -33,7 +33,6 @@ y con la magia de JS y DOM se vera reflejado en el document
 
 function cargarProductos() {
     if (productos.length > 0) {
-        contenedor.innerHTML = ""
         productos.forEach((producto) => contenedor.innerHTML += crearCardHTML(producto))
         activarClick()
     }
@@ -45,10 +44,17 @@ function activarClick() {
     botonAgregar.forEach((boton) => {
         boton.addEventListener("click", (e) => {
             const id = parseInt(e.target.id)
+            console.log("ID del producto clickeado:", id) //console.log para verificar
             const productoSeleccionado = productos.find((producto) => producto.id === id)
-            carrito2 = carrito.push(productoSeleccionado)
-            console.table(carrito)
-            return carrito
+            if (productoSeleccionado){
+                carrito.push(productoSeleccionado)  
+                console.log("Producto agregado al carrito:", carrito)
+                console.log(carrito)
+                return carrito
+            }else {
+                console.log('Producto no encontrado')
+            }
+            
         })
     })
 }
@@ -66,7 +72,7 @@ function guardarDatosCarrito() {
     localStorage.setItem("Carrito", JSON.stringify(carrito))
 }
 
-// agregar un "escuchador" de evento
+// agrego un "escuchador" de evento
 botonAdd.addEventListener("click",guardarDatosCarrito)
 
 

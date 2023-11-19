@@ -1,4 +1,4 @@
-const productos = []
+/*
 productos.push(new Prendas(4650, "BLAIR", "BLUSA CON NUDO", "CAMEL", "M", "CON MANGA", 4000, 10,"img/prendas/41.jpg"))
 productos.push(new Prendas(4651, "TOP BA", "TOP CON ARGOLLA", "NEGRO", "S", "SIN MANGA", 3500, 10,"img/prendas/39.jpg"))
 productos.push(new Prendas(4652, "MUSCULOSA LEOPARDA", "MUSCULOSA ESTAMPADA", "ESTAMPA", "M", "SIN MANGA", 3000, 10,"img/prendas/37.jpg"))
@@ -11,8 +11,20 @@ productos.push(new Prendas(4658, "BIKER MALVA", "BIKER DE LYCRA", "BLANCO", "M",
 productos.push(new Prendas(4659, "TOP M&NTA", "TOP MICROFIBRA CON TIRITAS", "CAMEL", "M", "SIN MANGAS", 5000, 10,"img/prendas/12.jpg"))
 productos.push(new Prendas(4660, "TOP KAILIN", "CORTE AMERICANO", "NEGRO", "S", "SIN MANGAS", 4000, 10,"img/prendas/42.jpg"))
 productos.push(new Prendas(4661, "BANDO GINEBRA", "CON FRUNCE Y LAZO AL COSTADO", "CAMEL", "S", "SIN MANGAS", 3500, 10,"img/prendas/28.jpg"))
+*/
 
-let carrito = []
+const productos = [
+    {id:1, nombre:"BLAIR", descripcion:"BLUSA CON NUDO", color:"CAMEL", talle:"M", categoria:"CON MANGA", precio:4000, stock:10,imagen:"img/prendas/41.jpg"},
+    {id:2, nombre:"BLAIR", descripcion:"BLUSA CON NUDO", color:"CAMEL", talle:"M", categoria:"CON MANGA", precio:4000, stock:10,imagen:"img/prendas/41.jpg"},
+    {id:3, nombre:"BLAIR", descripcion:"BLUSA CON NUDO", color:"CAMEL", talle:"M", categoria:"CON MANGA", precio:4000, stock:10,imagen:"img/prendas/41.jpg"},
+    {id:4, nombre:"BLAIR", descripcion:"BLUSA CON NUDO", color:"CAMEL", talle:"M", categoria:"CON MANGA", precio:4000, stock:10,imagen:"img/prendas/41.jpg"}
+
+
+]
+
+
+
+const carrito = []
 
 /*
 //Array que usare mas adelante
