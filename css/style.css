@@ -57,8 +57,23 @@ button {
 
 button:hover {
    /*background-color: black;*/
-    color: brown;
+    color: #7C5249;
 }
+
+
+.botones-local {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boton {
+    background-color: #7C5249;
+    border-radius: 10%;
+    padding: 10px;
+    color:#FFF
+}
+
+
 
 
 @media screen and (max-width:767px) {

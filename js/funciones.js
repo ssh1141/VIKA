@@ -1,6 +1,7 @@
 
 const contenedor = document.querySelector("#productos.productos")
 const botonAdd = document.querySelector("button#guardar")
+const botonVer=  document.querySelector("button#ver")
 //const contenedor2 = document.querySelector(".contenedor-carrito")
 
 function calcularTotalCarrito() {
@@ -63,10 +64,17 @@ function guardarDatosCarrito() {
     localStorage.setItem("Carrito", JSON.stringify(carrito))
 }
 
+function recuperarDatosCarrito() {
+    let datosCarrito = JSON.parse(localStorage.getItem("Carrito"))
+    if(datosCarrito.length > 0) {
+        console.table(datosCarrito)
+    } 
+}
+
 // agrego un "escuchador" de evento
 botonAdd.addEventListener("click", guardarDatosCarrito)
 
-
+botonVer.addEventListener("click", recuperarDatosCarrito)
 
 
 //Funciones que usare luego
