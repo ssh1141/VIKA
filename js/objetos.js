@@ -1,4 +1,3 @@
-/*
 class Prendas {
     constructor(id,nombre, descripcion, color, talle,categoria, precio, stock,imagen) {
         this.id = parseInt(id)
@@ -12,7 +11,7 @@ class Prendas {
         this.imagen = imagen
     }
 }
-*/
+
 
 
 
