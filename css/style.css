@@ -1,9 +1,20 @@
+
+:root {
+    --color-marron: #7C5249;
+}
+
+
 body {
     border-radius: 20%;
 }
 
 .navbar {
     background-color: transparent;
+}
+
+.logo-nav {
+    width:150px;
+    height:150px;
 }
 
 #carrusel{
@@ -44,7 +55,7 @@ body {
     justify-content: flex-start;
 }
 
-h5, h6 {
+h3, h5, h6, .volver, .botones-letra {
     font-family: 'Montserrat', sans-serif;
     font-size : 16px
 }
@@ -56,8 +67,7 @@ button {
 }
 
 button:hover {
-   /*background-color: black;*/
-    color: #7C5249;
+    color: var(--color-marron);
 }
 
 
@@ -67,11 +77,81 @@ button:hover {
 }
 
 .boton {
-    background-color: #7C5249;
+    background-color: var(--color-marron);
     border-radius: 10%;
     padding: 10px;
-    color:#FFF
+    color:#FFF;
 }
+
+/*BOTON COMPRAR*/
+.btn{
+   background-color: black; 
+   color: red;
+}
+
+/*CSS HTML CARRITO*/
+
+.contenedor-productos-carrito {
+    position: sticky;
+    top: 0; 
+    z-index: 100; 
+  }
+  
+
+.volver {
+    padding:0 30px 0 15px;   
+}
+
+.encabezado {
+    margin:20% 0 0 0;
+    padding: 0 0 0 5%;
+    border-top: 2px solid var(--color-marron);
+    border-left: 1px solid var(--color-marron);
+}
+
+
+/*CSS CARRITO */
+
+.contenedor-productos-carrito{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10%;
+
+}
+
+.carta-producto-carrito {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-producto-carrito {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+.boton-carrito {
+    display: flex;
+    align-items: center;
+    padding-right: 10%;
+}
+
+.nombre-producto-carrito{
+    font-size: 1.5rem;
+}
+
+.img-producto-carrito{
+    width: 20%;
+    padding: 10px;
+    border-radius: 10%;
+} 
+
+
+
 
 
 
@@ -81,5 +161,17 @@ button:hover {
         height: 100px;
     }
 
+    .logo-nav {
+        width: 150px;
+        height:150px;
+    }
+    .encabezado {
+        margin: 55% 0 0 0;
+        padding: 0 0 0 5%;
+    }
+
+    .nombre-producto-carrito{
+        font-size: 1.25rem;
+    }
 
  }
