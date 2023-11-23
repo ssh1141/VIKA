@@ -13,7 +13,7 @@ function calcularTotalCarrito() {
 function crearCardHTML(producto) {
     return `<div class="carta-producto">
             <div class="img-producto">
-                <img src="${producto.imagen}">
+                <img src="${producto.imagen}"  alt="${producto.descripcion}">
             </div>
             <div class="info-producto">
                 <h5>${producto.nombre}</h5>
@@ -45,33 +45,25 @@ function activarClick() {
     botonAgregar.forEach((boton) => {
         boton.addEventListener("click", (e) => {
             const id = parseInt(e.currentTarget.id)
-            //  console.log("ID del producto clickeado:", id) //console.log para verificar
             const productoSeleccionado = productos.find((producto) => producto.id === id)
-            if (productoSeleccionado) {
-                carrito.push(productoSeleccionado)
-                //  console.log("Producto agregado al carrito:", carrito)  //console.log para verificar
-                //console.log(carrito)
-                return carrito
-            } else {
-                console.log('Producto no encontrado')
-            }
-
+            AddCarrito (productoSeleccionado)
         })
     })
 }
-
+ 
+function AddCarrito (productoSeleccionado) {
+    productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')  ////// OPERADOR TERNADRIO
+}
 
 //// JSON y LocalStorage
 
 function guardarDatosCarrito() {
-    localStorage.setItem("Carrito", JSON.stringify(carrito))
+    localStorage.setItem("Carrito", JSON.stringify(carrito))    
 }
 
 function recuperarDatosCarrito() {
     let datosCarrito = JSON.parse(localStorage.getItem("Carrito"))
-    if (datosCarrito.length > 0) {
-        console.table(datosCarrito)
-    }
+    console.table(datosCarrito || "El carrito esta vacio")             ///OPERADOR OR
 }
 // agrego un "escuchador" de evento
 botonAdd.addEventListener("click", guardarDatosCarrito)
@@ -109,7 +101,7 @@ function crearCarrito(producto) {
     return `
     <div class="carta-producto-carrito">
         <div class="img-producto-carrito">
-            <img src="${producto.imagen}">
+            <img src="${producto.imagen} alt="${producto.descripcion}">
         </div>
         <div class="info-producto-carrito">
             <h5>${producto.nombre}</h5>
