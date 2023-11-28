@@ -55,7 +55,7 @@ body {
     justify-content: flex-start;
 }
 
-h3, h5, h6, .volver, .botones-letra {
+h2, h3, h5, h6, .volver, .botones-letra {
     font-family: 'Montserrat', sans-serif;
     font-size : 16px
 }
@@ -103,10 +103,9 @@ button:hover {
 }
 
 .encabezado {
-    margin:20% 0 0 0;
-    padding: 0 0 0 5%;
-    border-top: 2px solid var(--color-marron);
-    border-left: 1px solid var(--color-marron);
+    margin:5% 0 0 5%;
+    padding: 0 0 0 2%;
+    width: 100%;
 }
 
 
@@ -166,7 +165,7 @@ button:hover {
         height:150px;
     }
     .encabezado {
-        margin: 55% 0 0 0;
+        margin: 5% 0 0 5%;
         padding: 0 0 0 5%;
     }
 
