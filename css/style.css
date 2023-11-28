@@ -83,6 +83,11 @@ button:hover {
     color:#FFF;
 }
 
+.contenedor-boton-carrito {
+    top: 0;
+    margin-bottom:50px;
+}
+
 /*BOTON COMPRAR*/
 .btn{
    background-color: black; 
@@ -151,7 +156,12 @@ button:hover {
 
 
 
+/*FOOTER*/
 
+.footer {
+    height: 100vh;
+
+}
 
 
 

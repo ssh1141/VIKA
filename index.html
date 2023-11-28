@@ -39,10 +39,17 @@
             <a class="navbar-brand" href="#">
                 <img src="img/logo-vika.svg" width="100" alt="Logo de la pagina">
             </a>
-            <button id="btn-principal" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+             <div class="toggler-y-carrito">
+                <div class="contenedor-boton-carrito">
+                    <a href="carrito.html" class="btn custom-btn"><h5><b>Carrito(0)</b></h5></a>
+                </div>
+                <button id="btn-principal" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+             </div>
+            
+           
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
@@ -52,23 +59,22 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Todos los productos</a>
+                            <a class="nav-link active" aria-current="page" href="#productos">Todos los productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link guardar" href="#">Remeras</a>
+                            <a class="nav-link" id="Remeras" href="#">Remeras</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Top</a>
+                            <a class="nav-link" id="Pantalon" href="#">Pantalon</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Musculosa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pantalones</a>
+                            <a class="nav-link" id="Short" href="#">Short</a>
                         </li>
                     </ul>
                 </div>
             </div>
+           
+
         </div>
     </nav>
 
@@ -109,9 +115,20 @@
 
 
     <footer>
-        <div>
-        <a href="carrito.html" class="btn custom-btn">Ir al Carrito</a>
-        </div>
+       <div class="contenedor-footer">
+          <div class="contacto">
+            <h2>Seguinos en nuestras redes</h2>                
+            <a>Instagram</a>
+            <a>Facebook</a>   
+            <a>Tiktok</a>
+          </div>
+          <divc class="footer-bottom">
+            <a>configuracion de cookies</a>
+            <a>Politica de privacidad</a> 
+            <a>Condiciones de compra</a> 
+
+          </div>
+       </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
