@@ -45,27 +45,26 @@ function cargarProductos(array, contenedor) {
     }
 }
 cargarProductos(productos, contenedorCard)
-activarClick()
+activarClick("button.boton-add",cargarCarrito)
 
-function activarClick() {
-    const botonAgregar = document.querySelectorAll("button.boton-add")
+
+function activarClick(clase, funcion) {
+    const botonAgregar = document.querySelectorAll(clase)
     botonAgregar.forEach((boton) => {
-        boton.addEventListener("click", AddCarrito)
+        boton.addEventListener("click", funcion)
     })
 }
 
-function AddCarrito (e) {
+function cargarCarrito (e) {
         const id = parseInt(e.currentTarget.id)
         const productoSeleccionado = productos.find((producto) => producto.id === id)
-        AddArrayCarrito(productoSeleccionado)
+        cargarArrayCarrito(productoSeleccionado)
     }
 
-
-function AddArrayCarrito(productoSeleccionado) {
+function cargarArrayCarrito(productoSeleccionado) {
     productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')  ////// OPERADOR TERNADRIO
     guardarDatosCarrito()
 }
-
 
 
 //// JSON y LocalStorage
@@ -78,26 +77,15 @@ function guardarDatosCarrito() {
 
 cargarProductos(datosCarrito, contenedorCarrito)
 
-/*
-function activarClick(clase,) {
-    const botonAgregar = document.querySelectorAll(clase)
-    botonAgregar.forEach((boton) => {
-        boton.addEventListener("click", 
-        })
-    })
+
+
+function filtrarProductos(e) {
+    const categoria = e.currentTarget.id
+    const resultado = productos.filter((producto) => producto.categoria === categoria)
+    contenedorCard.innerHTML = ""
+    cargarProductos(resultado, contenedorCard)
 }
-
-*/
-
-/*
-function filtrarProductos() {
-    let categoria = 
-    let resultado = productos.filter((producto) => producto.categoria === categoria)
-
-    console.table(resultado)
-}
-
-*/
+activarClick(".filtrar", filtrarProductos)
 
 
 /*
