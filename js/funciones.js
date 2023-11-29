@@ -3,6 +3,10 @@ const contenedorCard = document.querySelector("#productos.productos")
 const contenedorCarrito = document.querySelector("#contenedor-supremo")
 const btnIrCarrito = document.querySelector("button#ir-carrito")
 let datosCarrito = JSON.parse(localStorage.getItem("Carrito"))
+const productos = []
+const carrito = []
+const URL = "js/productos.json"
+
 
 
 function crearCardHTML(producto) {
@@ -48,6 +52,19 @@ cargarProductos(productos, contenedorCard)
 activarClick("button.boton-add",cargarCarrito)
 
 
+
+function mensajeToast(mensaje) {
+    Toastify({
+        text: mensaje,
+        duration: 6000,
+        style: {
+          background: estilo,
+        }
+      }).showToast()
+}
+
+
+
 function activarClick(clase, funcion) {
     const botonAgregar = document.querySelectorAll(clase)
     botonAgregar.forEach((boton) => {
@@ -59,18 +76,22 @@ function cargarCarrito (e) {
         const id = parseInt(e.currentTarget.id)
         const productoSeleccionado = productos.find((producto) => producto.id === id)
         cargarArrayCarrito(productoSeleccionado)
+        mensajeToast(`${productoSeleccionado.nombre} se agregó al carrito`, "#D8B696")
     }
 
 function cargarArrayCarrito(productoSeleccionado) {
-    productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')  ////// OPERADOR TERNADRIO
+    productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')
     guardarDatosCarrito()
+    
 }
+
 
 
 //// JSON y LocalStorage
 
 function guardarDatosCarrito() {
     localStorage.setItem("Carrito", JSON.stringify(carrito))
+    
 }
 
 //Cargar productos al carrito.
