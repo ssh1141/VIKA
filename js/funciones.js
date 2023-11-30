@@ -56,9 +56,9 @@ function mensajeToast(mensaje, estilo) {
         text: mensaje,
         duration: 6000,
         style: {
-          background: estilo,
+            background: estilo,
         }
-      }).showToast()
+    }).showToast()
 }
 
 function activarClick(clase, funcion) {
@@ -70,16 +70,16 @@ function activarClick(clase, funcion) {
 
 
 
-function cargarCarrito (e) {
-        const id = parseInt(e.currentTarget.id)
-        const productoSeleccionado = productos.find((producto) => producto.id === id)
-        cargarArrayCarrito(productoSeleccionado)
-        mensajeToast(`${productoSeleccionado.nombre} se agregó al carrito`, "green")
-    }
+function cargarCarrito(e) {
+    const id = parseInt(e.currentTarget.id)
+    const productoSeleccionado = productos.find((producto) => producto.id === id)
+    cargarArrayCarrito(productoSeleccionado)
+    mensajeToast(`${productoSeleccionado.nombre} se agregó al carrito`, "green")
+}
 
 function cargarArrayCarrito(productoSeleccionado) {
     productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')
-    localStorage.setItem("Carrito", JSON.stringify(carrito))   
+    localStorage.setItem("Carrito", JSON.stringify(carrito))
 }
 
 
@@ -99,23 +99,22 @@ function calcularTotalCarrito(datosCarrito) {
 
 function obtenerProductos() {
     fetch(URL)
-    .then((response)=> response.json())
-    .then((data)=> productos.push(...data) )
-    .then(()=> cargarProductos(productos, contenedorCard))
-    .then(()=> activarClick("button.boton-add",cargarCarrito))
-    .catch (()=> contenedorCard.innerHTML = cargaError())
-    .then(()=> cargarProductos(datosCarrito, contenedorCarrito))
-    .then(()=> calcularTotalCarrito(datosCarrito))
-    .catch (()=> contenedorCard.innerHTML = cargaError())
+        .then((response) => response.json())
+        .then((data) => productos.push(...data))
+        .then(() => cargarProductos(productos, contenedorCard))
+        .then(() => activarClick("button.boton-add", cargarCarrito))
+        .catch(() => contenedorCard.innerHTML = cargaError())
+        .then(() => cargarProductos(datosCarrito, contenedorCarrito))
+        .then(() => calcularTotalCarrito(datosCarrito))
+        .catch(() => contenedorCard.innerHTML = cargaError())
 
 }
-
 obtenerProductos()
 
 //    
 
-btnRefesh.addEventListener("click", ()=> {
-    cargarProductos(productos, contenedorCard)  
+btnRefesh.addEventListener("click", () => {
+    cargarProductos(productos, contenedorCard)
 })
 
 cantidadCarrito.innerHTML = `Carrito(${datosCarrito.length})`
