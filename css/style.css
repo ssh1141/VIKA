@@ -96,12 +96,7 @@ button:hover {
 
 /*CSS HTML CARRITO*/
 
-.contenedor-productos-carrito {
-    position: sticky;
-    top: 0; 
-    z-index: 100; 
-  }
-  
+
 
 .volver {
     padding:0 30px 0 15px;   
@@ -116,49 +111,22 @@ button:hover {
 
 /*CSS CARRITO */
 
-.contenedor-productos-carrito{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 10%;
 
+.contenedor-1 {
+    margin: 25% 0 25% 0;
 }
 
-.carta-producto-carrito {
-    display: flex;
-    justify-content: space-between;
-}
-
-.info-producto-carrito {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0;
-    margin: 0;
-}
-
-.boton-carrito {
-    display: flex;
-    align-items: center;
-    padding-right: 10%;
-}
-
-.nombre-producto-carrito{
-    font-size: 1.5rem;
-}
-
-.img-producto-carrito{
-    width: 20%;
+.contenedor-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 10px;
-    border-radius: 10%;
-} 
-
+}
 
 
 /*FOOTER*/
 
 .footer {
+
     height: 100vh;
 
 }

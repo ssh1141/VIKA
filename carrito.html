@@ -10,8 +10,6 @@
     <title>VIKA basicss | COMPRA</title>
     <!--Incorporacion archivo js de objetos-->
     <script defer src="js/objetos.js"></script>
-    <!--Incorporacion archivo js de arrays-->
-    <script defer src="js/arrays.js"></script>
     <!--Incorporacion  archivo js de funciones-->
     <script defer src="js/funciones.js"></script>
     <!--link estilos CSS-->
@@ -29,8 +27,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="img/logo-vika.svg">
-         <!--Toasty-->
-         <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!--Toasty-->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
 
@@ -46,39 +44,39 @@
 
 
     <!--Productos-->
-
-    <div class="contenedor-supremo" id="contenedor-supremo">
+    <div id="contenedor-1" class="contenedor-1">
         <h3 class="encabezado"><b>Carrito</b></h3>
         <hr>
+        <div class="contenedor-2" id="contenedor-2">
+        </div>
     </div>
 
-
     <div class="fixed-bottom bg-white bg-opacity-50 p-3 d-flex justify-content-end align-items-center ">
-        <p class="mr-3">Total: $100.00</p>
+        <p class="mr-3" id="total-compra">Total: $0.00</p>
         <button class="btn custom-btn">Comprar</button>
     </div>
 
 
     <footer class="footer">
         <div class="contenedor-footer">
-           <div class="contacto">
-             <h2>Seguinos en nuestras redes</h2>                
-             <a>Instagram</a>
-             <a>Facebook</a>   
-             <a>Tiktok</a>
-           </div>
-           <divc class="footer-bottom">
-             <a>configuracion de cookies</a>
-             <a>Politica de privacidad</a> 
-             <a>Condiciones de compra</a> 
- 
-           </div>
-        </div>
-     </footer>
+            <div class="contacto">
+                <h2>Seguinos en nuestras redes</h2>
+                <a>Instagram</a>
+                <a>Facebook</a>
+                <a>Tiktok</a>
+            </div>
+            <divc class="footer-bottom">
+                <a>configuracion de cookies</a>
+                <a>Politica de privacidad</a>
+                <a>Condiciones de compra</a>
 
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-     crossorigin="anonymous"></script>
+        </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

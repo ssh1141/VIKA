@@ -13,7 +13,7 @@ productos.push(new Prendas(4660, "TOP KAILIN", "CORTE AMERICANO", "NEGRO", "S", 
 productos.push(new Prendas(4661, "BANDO GINEBRA", "CON FRUNCE Y LAZO AL COSTADO", "CAMEL", "S", "SIN MANGAS", 3500, 10,"img/prendas/28.jpg"))
 */
 
-
+/*
 const productos = [
     { id: 4650, nombre: "BLAIR", descripcion: "BLUSA CON NUDO", color: "CAMEL", talle: "M", categoria: "REMERAS", precio: 4000, sotck: 10, imagen: "img/prendas/41.jpg" },
     { id: 4651, nombre: "TOP BA", descripcion: "TOP CON ARGOLLA", color: "NEGRO", talle: "S", categoria: "REMERAS", precio: 3500, sotck: 10, imagen: "img/prendas/39.jpg" },
@@ -39,6 +39,6 @@ const productos = [
 
 const carrito = []
 
-
+*/
 
 

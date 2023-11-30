@@ -1,8 +1,10 @@
-
 const contenedorCard = document.querySelector("#productos.productos")
-const contenedorCarrito = document.querySelector("#contenedor-supremo")
+const contenedorCarrito = document.querySelector("#contenedor-2")
 const btnIrCarrito = document.querySelector("button#ir-carrito")
-let datosCarrito = JSON.parse(localStorage.getItem("Carrito"))
+const btnRefesh = document.querySelector("#refesh")
+const totalCompra = document.querySelector("#total-compra")
+const datosCarrito = JSON.parse(localStorage.getItem("Carrito")) || []
+const cantidadCarrito = document.querySelector("#cantidad-carrito")
 const productos = []
 const carrito = []
 const URL = "js/productos.json"
@@ -28,15 +30,14 @@ function crearCardHTML(producto) {
 }
 
 
-function CarritoVacio() {
+function cargaError() {
     return `<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div>
-        <h5>El carrito está vacío</h5>
+        <h5>No hay productos</h5>
     </div>
 </div>
 `
 }
-
 
 function cargarProductos(array, contenedor) {
     if (contenedor) {
@@ -48,12 +49,9 @@ function cargarProductos(array, contenedor) {
         }
     }
 }
-cargarProductos(productos, contenedorCard)
-activarClick("button.boton-add",cargarCarrito)
 
 
-
-function mensajeToast(mensaje) {
+function mensajeToast(mensaje, estilo) {
     Toastify({
         text: mensaje,
         duration: 6000,
@@ -63,8 +61,6 @@ function mensajeToast(mensaje) {
       }).showToast()
 }
 
-
-
 function activarClick(clase, funcion) {
     const botonAgregar = document.querySelectorAll(clase)
     botonAgregar.forEach((boton) => {
@@ -72,32 +68,19 @@ function activarClick(clase, funcion) {
     })
 }
 
+
+
 function cargarCarrito (e) {
         const id = parseInt(e.currentTarget.id)
         const productoSeleccionado = productos.find((producto) => producto.id === id)
         cargarArrayCarrito(productoSeleccionado)
-        mensajeToast(`${productoSeleccionado.nombre} se agregó al carrito`, "#D8B696")
+        mensajeToast(`${productoSeleccionado.nombre} se agregó al carrito`, "green")
     }
 
 function cargarArrayCarrito(productoSeleccionado) {
     productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')
-    guardarDatosCarrito()
-    
+    localStorage.setItem("Carrito", JSON.stringify(carrito))   
 }
-
-
-
-//// JSON y LocalStorage
-
-function guardarDatosCarrito() {
-    localStorage.setItem("Carrito", JSON.stringify(carrito))
-    
-}
-
-//Cargar productos al carrito.
-
-cargarProductos(datosCarrito, contenedorCarrito)
-
 
 
 function filtrarProductos(e) {
@@ -106,14 +89,37 @@ function filtrarProductos(e) {
     contenedorCard.innerHTML = ""
     cargarProductos(resultado, contenedorCard)
 }
+
 activarClick(".filtrar", filtrarProductos)
 
-
-/*
-********Funciones que usare luego*******
-
-function calcularTotalCarrito() {
-    const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-    console.log("El total de su compra es de: $" + total)
+function calcularTotalCarrito(datosCarrito) {
+    const total = datosCarrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+    totalCompra.innerText = `Total: $${total}`
 }
-*/
+
+function obtenerProductos() {
+    fetch(URL)
+    .then((response)=> response.json())
+    .then((data)=> productos.push(...data) )
+    .then(()=> cargarProductos(productos, contenedorCard))
+    .then(()=> activarClick("button.boton-add",cargarCarrito))
+    .catch (()=> contenedorCard.innerHTML = cargaError())
+    .then(()=> cargarProductos(datosCarrito, contenedorCarrito))
+    .then(()=> calcularTotalCarrito(datosCarrito))
+    .catch (()=> contenedorCard.innerHTML = cargaError())
+
+}
+
+obtenerProductos()
+
+//    
+
+btnRefesh.addEventListener("click", ()=> {
+    cargarProductos(productos, contenedorCard)  
+})
+
+cantidadCarrito.innerHTML = `Carrito(${datosCarrito.length})`
+
+
+
+
