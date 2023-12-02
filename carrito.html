@@ -8,10 +8,12 @@
     <meta name="author" content="Sasha Soler">
     <meta name="keywords" content="e-commerce,Javascrip">
     <title>VIKA basicss | COMPRA</title>
-    <!--Incorporacion archivo js de objetos-->
-    <script defer src="js/objetos.js"></script>
+    <!--Incorporacion  archivo js de variables-->
+    <script defer src="js/const.js"></script>
     <!--Incorporacion  archivo js de funciones-->
     <script defer src="js/funciones.js"></script>
+    <!--Incorporacion  archivo js de carrito-->
+    <script defer src="js/carrito.js"></script>
     <!--link estilos CSS-->
     <link rel="stylesheet" href="css/style.css">
     <!--Google Fonts-->
@@ -36,10 +38,10 @@
 
     <!--Barra de navegacion-->
     <nav class="navbar fixed-top navbar-light barra-nav-carrito">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
             <img class="logo-nav" src="img/logo-vika.svg" alt="Logo de la pagina">
         </a>
-        <a href="index.html" class="btn custom-btn volver">Inicio</a>
+        <a href="index.html" class="btn custom-btn volver"><h6><b>Inicio</b></h6></a>
     </nav>
 
 
@@ -53,7 +55,7 @@
 
     <div class="fixed-bottom bg-white bg-opacity-50 p-3 d-flex justify-content-end align-items-center ">
         <p class="mr-3" id="total-compra">Total: $0.00</p>
-        <button class="btn custom-btn">Comprar</button>
+        <button class="btn custom-btn" id="btn-comprar">Comprar</button>
     </div>
 
 

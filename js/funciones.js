@@ -1,17 +1,4 @@
-const contenedorCard = document.querySelector("#productos.productos")
-const contenedorCarrito = document.querySelector("#contenedor-2")
-const btnIrCarrito = document.querySelector("button#ir-carrito")
-const btnRefesh = document.querySelector("#refesh")
-const totalCompra = document.querySelector("#total-compra")
-const datosCarrito = JSON.parse(localStorage.getItem("Carrito")) || []
-const cantidadCarrito = document.querySelector("#cantidad-carrito")
-const productos = []
-const carrito = []
-const URL = "js/productos.json"
-
-
-
-function crearCardHTML(producto) {
+function cardHTML(producto) {
     return `<div class="carta-producto">
             <div class="img-producto">
                 <img src="${producto.imagen}"  alt="${producto.descripcion}">
@@ -30,8 +17,28 @@ function crearCardHTML(producto) {
 }
 
 
-function cargaError() {
-    return `<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+function cardHTMLCarrito (producto) {
+    return `<div class="carta-producto">
+            <div class="img-producto">
+                <img src="${producto.imagen}"  alt="${producto.descripcion}">
+            </div>
+            <div class="info-producto">
+                <h5>${producto.nombre}</h5>
+                <h6>$ ${producto.precio}</h6>
+            </div>
+            <div class="button">
+              <button class="btn-delete" id="${producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+              <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+            </svg></button>
+            </div>
+        </div>`
+}
+
+
+
+
+function errorDeCarga() {
+    return `<div class="d-flex justify-content-center align-items-center" style="height:70vh;">
     <div>
         <h5>No hay productos</h5>
     </div>
@@ -43,9 +50,13 @@ function cargarProductos(array, contenedor) {
     if (contenedor) {
         if (array && array.length > 0) {
             contenedor.innerHTML = ""
-            array.forEach((producto) => contenedor.innerHTML += crearCardHTML(producto))
+            if (contenedor === contenedorCard) {
+                array.forEach((producto) => contenedor.innerHTML += cardHTML(producto))
+            } else {
+                array.forEach((producto) => contenedor.innerHTML += cardHTMLCarrito(producto))
+            }
         } else {
-            contenedor.innerHTML = CarritoVacio()
+            contenedor.innerHTML = errorDeCarga()
         }
     }
 }
@@ -53,21 +64,27 @@ function cargarProductos(array, contenedor) {
 
 function mensajeToast(mensaje, estilo) {
     Toastify({
-        text: mensaje,
-        duration: 6000,
+        text: "This is a toast",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: estilo,
-        }
-    }).showToast()
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function () { } // Callback after click
+    }).showToast();
 }
 
 function activarClick(clase, funcion) {
-    const botonAgregar = document.querySelectorAll(clase)
-    botonAgregar.forEach((boton) => {
+    const botonAccion = document.querySelectorAll(clase)
+    botonAccion.forEach((boton) => {
         boton.addEventListener("click", funcion)
     })
 }
-
 
 
 function cargarCarrito(e) {
@@ -83,6 +100,7 @@ function cargarArrayCarrito(productoSeleccionado) {
 }
 
 
+
 function filtrarProductos(e) {
     const categoria = e.currentTarget.id
     const resultado = productos.filter((producto) => producto.categoria === categoria)
@@ -92,10 +110,8 @@ function filtrarProductos(e) {
 
 activarClick(".filtrar", filtrarProductos)
 
-function calcularTotalCarrito(datosCarrito) {
-    const total = datosCarrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-    totalCompra.innerText = `Total: $${total}`
-}
+
+
 
 function obtenerProductos() {
     fetch(URL)
@@ -103,21 +119,19 @@ function obtenerProductos() {
         .then((data) => productos.push(...data))
         .then(() => cargarProductos(productos, contenedorCard))
         .then(() => activarClick("button.boton-add", cargarCarrito))
-        .catch(() => contenedorCard.innerHTML = cargaError())
-        .then(() => cargarProductos(datosCarrito, contenedorCarrito))
-        .then(() => calcularTotalCarrito(datosCarrito))
-        .catch(() => contenedorCard.innerHTML = cargaError())
+        .then(() => lengthCarrito.innerHTML = `Carrito(${datosCarrito.length})`)
+        .catch(() => contenedorCard.innerHTML = errorDeCarga())
 
 }
 obtenerProductos()
 
 //    
 
-btnRefesh.addEventListener("click", () => {
-    cargarProductos(productos, contenedorCard)
-})
+btnRefesh.addEventListener("click", () => location.reload())
 
-cantidadCarrito.innerHTML = `Carrito(${datosCarrito.length})`
+
+
+
 
 
 
