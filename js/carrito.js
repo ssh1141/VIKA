@@ -8,23 +8,22 @@ function obtenerProductosCarrito() {
     fetch(URL)
      .then(() => cargarProductos(datosCarrito, contenedorCarrito))
      .then(() => calcularTotalCarrito(datosCarrito))
+     .then(() => activarClick(".btn-delete", eliminarProducto))
      .catch(() => contenedorCarrito.innerHTML = errorDeCarga())
 }
 obtenerProductosCarrito()
 
 
-/*
 function eliminarProducto (e) {
     const id = parseInt(e.currentTarget.id)
-    console.log(id)
-    const index = carrito.findIndex(producto => producto.id === id)
-    console.log(index)
-    if (index !== -1) {
-        carrito.splice(index, 1);
-        localStorage.setItem("Carrito", JSON.stringify(carrito))
+    const index = datosCarrito.findIndex(producto => producto.id === id)
+     if (index !== -1) {
+        datosCarrito.splice(index, 1)
+        localStorage.setItem("Carrito", JSON.stringify(datosCarrito))
+        //despues de 1 segundo reload
         location.reload()
+        
     }
 }
-activarClick(".btn-delete", eliminarProducto)
 
-*/
+
