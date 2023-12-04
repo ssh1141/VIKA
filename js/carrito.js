@@ -4,14 +4,33 @@ function calcularTotalCarrito(datosCarrito) {
 }
 
 
-function obtenerProductosCarrito() {
-    fetch(URL)
-     .then(() => cargarProductos(datosCarrito, contenedorCarrito))
-     .then(() => calcularTotalCarrito(datosCarrito))
-     .then(() => activarClick(".btn-delete", eliminarProducto))
-     .catch(() => contenedorCarrito.innerHTML = errorDeCarga())
+async function obtenerProductosCarrito() {
+    try {
+        const response = await fetch(URL)
+        const data = await response.json()
+        cargarProductos(datosCarrito, contenedorCarrito)
+        calcularTotalCarrito(datosCarrito)
+        activarClick(".btn-delete", eliminarProducto)
+    }catch {
+     contenedorCarrito.innerHTML = errorDeCarga()
+    }
 }
 obtenerProductosCarrito()
+
+function msjToastFinal(mensaje) {
+    Toastify({
+        text: mensaje,
+        duration: 2000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #AF918A, #ECDDD9)",
+        }
+    }).showToast();
+}
+
 
 
 function eliminarProducto (e) {
@@ -20,10 +39,9 @@ function eliminarProducto (e) {
      if (index !== -1) {
         datosCarrito.splice(index, 1)
         localStorage.setItem("Carrito", JSON.stringify(datosCarrito))
-        //despues de 1 segundo reload
         location.reload()
-        
     }
 }
+
 
 

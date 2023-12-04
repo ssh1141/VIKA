@@ -1,3 +1,4 @@
+
 class Prendas {
     constructor(id,nombre, descripcion, color, talle,categoria, precio, stock,imagen) {
         this.id = parseInt(id)
@@ -14,6 +15,13 @@ class Prendas {
 
 
 
+class Carrito {
+   constructor () {
+
+    this.productos = []
+   }
+}
 
 
+productos.push(new Carrito(...data))
 

@@ -35,8 +35,6 @@ function cardHTMLCarrito (producto) {
 }
 
 
-
-
 function errorDeCarga() {
     return `<div class="d-flex justify-content-center align-items-center" style="height:70vh;">
     <div>
@@ -45,6 +43,7 @@ function errorDeCarga() {
 </div>
 `
 }
+
 
 function cargarProductos(array, contenedor) {
     if (contenedor) {
@@ -62,22 +61,20 @@ function cargarProductos(array, contenedor) {
 }
 
 
-function mensajeToast(mensaje, estilo) {
+function msjToast(mensaje) {
     Toastify({
-        text: "This is a toast",
-        duration: 3000,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
+        text: mensaje,
+        duration: 2000,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
         style: {
-            background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
-        onClick: function () { } // Callback after click
+            background: "linear-gradient(to right, #AF918A, #ECDDD9)",
+        }
     }).showToast();
 }
+
 
 function activarClick(clase, funcion) {
     const botonAccion = document.querySelectorAll(clase)
@@ -91,7 +88,7 @@ function cargarCarrito(e) {
     const id = parseInt(e.currentTarget.id)
     const productoSeleccionado = productos.find((producto) => producto.id === id)
     cargarArrayCarrito(productoSeleccionado)
-    mensajeToast(`${productoSeleccionado.nombre} se agregó al carrito`, "green")
+    msjToast(`${productoSeleccionado.nombre} se agregó al carrito!`)
 }
 
 function cargarArrayCarrito(productoSeleccionado) {
@@ -110,24 +107,24 @@ function filtrarProductos(e) {
 
 activarClick(".filtrar", filtrarProductos)
 
-
-
-
-function obtenerProductos() {
-    fetch(URL)
-        .then((response) => response.json())
-        .then((data) => productos.push(...data))
-        .then(() => cargarProductos(productos, contenedorCard))
-        .then(() => activarClick("button.boton-add", cargarCarrito))
-        .then(() => lengthCarrito.innerHTML = `Carrito(${datosCarrito.length})`)
-        .catch(() => contenedorCard.innerHTML = errorDeCarga())
-
+ 
+async function obtenerProductos() {     
+     try {
+        const response = await fetch(URL)
+        const data = await response.json()
+        productos.push(...data)
+        cargarProductos(productos, contenedorCard)
+        btnRefesh.addEventListener("click", () => location.reload())
+        activarClick("button.boton-add", cargarCarrito)
+        lengthCarrito.innerHTML = `Carrito(${datosCarrito.length})`
+       }    
+       catch {
+        contenedorCard.innerHTML = errorDeCarga()
+       }
 }
+
 obtenerProductos()
 
-//    
-
-btnRefesh.addEventListener("click", () => location.reload())
 
 
 
