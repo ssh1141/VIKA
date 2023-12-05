@@ -28,8 +28,7 @@ class Carrito {
 
     actualizarLocalStorage() {
         localStorage.setItem("Carrito", JSON.stringify(this.productosCarrito))
-    }
 }
 
-
+}
 

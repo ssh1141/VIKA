@@ -90,14 +90,6 @@ function agregarProductoCarrito(e) {
     msjToast(`${productoSeleccionado.nombre} se agregó al carrito!`)
 }
 
-/*
-function cargarArrayCarrito(productoSeleccionado) {
-    productoSeleccionado ? carrito.push(productoSeleccionado)
-    localStorage.setItem("Carrito", JSON.stringify(carrito))
-}
-*/
-
-
 function filtrarProductos(e) {
     const categoria = e.currentTarget.id
     const resultado = productos.filter((producto) => producto.categoria === categoria)
@@ -123,7 +115,6 @@ async function obtenerProductos() {
         contenedorCard.innerHTML = errorDeCarga()
        }
 }
-
 obtenerProductos()
 
 
