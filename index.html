@@ -8,12 +8,12 @@
     <meta name="author" content="Sasha Soler">
     <meta name="keywords" content="e-commerce,Javascrip">
     <title>VIKA basicss | STORE</title>
-        <!--Incorporacion  archivo js de objetos-->
+    <!--Incorporacion  archivo js de objetos-->
     <script defer src="js/objetos.js"></script>
-    <!--Incorporacion  archivo js de variables-->
-    <script defer src="js/const.js"></script>
     <!--Incorporacion  archivo js de funciones-->
-    <script defer src="js/funciones.js"></script>
+    <script defer src="js/funcionesCompartidas.js"></script>
+    <!--Incorporacion  archivo js de funciones-->
+    <script defer src="js/index.js"></script>
     <!--link CSS-->
     <link rel="stylesheet" href="css/style.css">
     <!--Google Fonts-->
@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="img/logo-vika.svg">
-    <!--Toasty-->
-    <script defer src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--SweertAlert2-->
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -113,8 +113,12 @@
 
 
     <!--seccion Productos -->
-    <section id="productos" class="productos">
+    <section id="contenedor-productos" class="contenedor-productos">
         <h2 class="encabezado"><b>Todos los productos</b></h2>
+        <hr>
+        <div id="productos" class="productos">
+
+        </div>
 
     </section>
 

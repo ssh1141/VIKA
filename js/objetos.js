@@ -1,4 +1,3 @@
-
 class Carrito {
     constructor() {
         this.productosCarrito = JSON.parse(localStorage.getItem("Carrito")) || [];
@@ -19,6 +18,8 @@ class Carrito {
     vaciarCarrito() {
         this.productosCarrito = []
         this.actualizarLocalStorage()
+        
+        location.reload()   
     }
 
     obtenerTotal() {
