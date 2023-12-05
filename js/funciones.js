@@ -75,7 +75,6 @@ function msjToast(mensaje) {
     }).showToast();
 }
 
-
 function activarClick(clase, funcion) {
     const botonAccion = document.querySelectorAll(clase)
     botonAccion.forEach((boton) => {
@@ -84,18 +83,19 @@ function activarClick(clase, funcion) {
 }
 
 
-function cargarCarrito(e) {
+function agregarProductoCarrito(e) {
     const id = parseInt(e.currentTarget.id)
     const productoSeleccionado = productos.find((producto) => producto.id === id)
-    cargarArrayCarrito(productoSeleccionado)
+    carrito.agregarProducto(productoSeleccionado)
     msjToast(`${productoSeleccionado.nombre} se agregó al carrito!`)
 }
 
+/*
 function cargarArrayCarrito(productoSeleccionado) {
-    productoSeleccionado ? carrito.push(productoSeleccionado) : console.log('Producto no encontrado')
+    productoSeleccionado ? carrito.push(productoSeleccionado)
     localStorage.setItem("Carrito", JSON.stringify(carrito))
 }
-
+*/
 
 
 function filtrarProductos(e) {
@@ -107,6 +107,7 @@ function filtrarProductos(e) {
 
 activarClick(".filtrar", filtrarProductos)
 
+
  
 async function obtenerProductos() {     
      try {
@@ -115,8 +116,8 @@ async function obtenerProductos() {
         productos.push(...data)
         cargarProductos(productos, contenedorCard)
         btnRefesh.addEventListener("click", () => location.reload())
-        activarClick("button.boton-add", cargarCarrito)
-        lengthCarrito.innerHTML = `Carrito(${datosCarrito.length})`
+        activarClick("button.boton-add", agregarProductoCarrito)
+        lengthCarrito.innerHTML = `Carrito(${carrito.productosCarrito.length})`
        }    
        catch {
         contenedorCard.innerHTML = errorDeCarga()
@@ -124,9 +125,6 @@ async function obtenerProductos() {
 }
 
 obtenerProductos()
-
-
-
 
 
 

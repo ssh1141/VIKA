@@ -1,15 +1,15 @@
-function calcularTotalCarrito(datosCarrito) {
-    const total = datosCarrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-    totalCompra.innerText = `Total(${datosCarrito.length}): $${total}`
-}
 
+function eliminarProducto (e) {
+    const id = parseInt(e.currentTarget.id)
+    const index = carrito.productosCarrito.findIndex(producto => producto.id === id)
+    carrito.eliminarProducto(index)
+    location.reload()
+}
 
 async function obtenerProductosCarrito() {
     try {
-        const response = await fetch(URL)
-        const data = await response.json()
-        cargarProductos(datosCarrito, contenedorCarrito)
-        calcularTotalCarrito(datosCarrito)
+        cargarProductos(carrito.productosCarrito, contenedorCarrito)
+        carrito.obtenerTotal()
         activarClick(".btn-delete", eliminarProducto)
     }catch {
      contenedorCarrito.innerHTML = errorDeCarga()
@@ -17,31 +17,14 @@ async function obtenerProductosCarrito() {
 }
 obtenerProductosCarrito()
 
-function msjToastFinal(mensaje) {
-    Toastify({
-        text: mensaje,
-        duration: 2000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        stopOnFocus: true,
-        style: {
-            background: "linear-gradient(to right, #AF918A, #ECDDD9)",
-        }
-    }).showToast();
-}
 
 
 
-function eliminarProducto (e) {
-    const id = parseInt(e.currentTarget.id)
-    const index = datosCarrito.findIndex(producto => producto.id === id)
-     if (index !== -1) {
-        datosCarrito.splice(index, 1)
-        localStorage.setItem("Carrito", JSON.stringify(datosCarrito))
-        location.reload()
-    }
-}
+
+
+
+
+
 
 
 
