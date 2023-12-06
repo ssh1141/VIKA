@@ -1,11 +1,8 @@
 const contenedorCarrito = document.querySelector("#contenedor-2")
 const totalCompra = document.querySelector("#total-compra")
+const btnVaciarCarrito =document.querySelector("#vaciarCarrito") 
 
 
-function mostrarTotal () {
-   const total = carrito.obtenerTotal()
-   totalCompra.innerText = `Total(${carrito.productosCarrito.length}): $${total}`
-}
 
 function cardProductoCarrito(producto) {
   return `<div class="carta-producto">
@@ -31,6 +28,12 @@ function eliminarProducto(e) {
   location.reload()
 }
 
+function mostrarTotal () {
+   const total = carrito.obtenerTotal()
+   totalCompra.innerText = `Total(${carrito.productosCarrito.length}): $${total}`
+}
+
+
 function finalizarCompra() {
 if(carrito.productosCarrito.length != []) {
 
@@ -40,8 +43,8 @@ if(carrito.productosCarrito.length != []) {
     title: 'Ultimo paso...¡Confirmá tu compra!',
     html: contenidoHTML,
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
+    confirmButtonColor: '#91DF48',
+    cancelButtonColor: '#DF7648',
     confirmButtonText: 'Comprar',
     cancelButtonText: 'Continuar comprando',
   }).then((result) => {
@@ -60,6 +63,17 @@ if(carrito.productosCarrito.length != []) {
  }
 }
 
+//Funcion que muestra el boton vaciar carrito y activa el evento click
+function vaciarCarrito() {
+  if (carrito.productosCarrito.length > 0) {
+    btnVaciarCarrito.style.display = "block"
+    btnVaciarCarrito.addEventListener ("click", ()=> {
+      carrito.vaciarCarrito()
+    })
+  } else {
+    btnVaciarCarrito.style.display = "none"
+  }
+}
 
 
 
@@ -69,6 +83,7 @@ async function inciarCarrito() {
     mostrarTotal()
     activarClick(".btn-delete", eliminarProducto)
     activarClick(".btn-comprar", finalizarCompra)
+    vaciarCarrito()
 
   } catch {
     contenedorCarrito.innerHTML = errorDeCarga()
@@ -76,6 +91,8 @@ async function inciarCarrito() {
 }
 
 inciarCarrito()
+
+
 
 
 

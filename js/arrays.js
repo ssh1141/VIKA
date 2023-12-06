@@ -1,3 +1,5 @@
+//Documento no enlazado, uso para administracion de archivo JSON 
+
 /*
 const productos = [
     { id: 4650, nombre: "BLAIR", descripcion: "BLUSA CON NUDO", color: "CAMEL", categoria: "REMERAS", precio: 7000,  imagen: "img/prendas/41.jpg" },

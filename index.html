@@ -37,7 +37,7 @@
 <body>
 
     <!--Barra de navegacion-->
-    <nav class="navbar fixed-top navbar-light">
+    <nav class="navbar fixed-top navbar-light ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="img/logo-vika.svg" width="100" alt="Logo de la pagina">
@@ -45,7 +45,7 @@
             <div class="toggler-y-carrito">
                 <div class="contenedor-boton-carrito">
                     <a href="carrito.html" class="btn custom-btn">
-                        <h6><b id="cantidad-carrito">Carrito(0)</b></h6>
+                        <h6><b id="cantidad-carrito" class="cantidad-carrito"></b></h6>
                     </a>
                 </div>
                 <button id="btn-principal" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -75,14 +75,17 @@
                         <li class="nav-item ">
                             <a class="nav-link filtrar" id="ACCESORIOS" href="#productos">Accesorios</a>
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link"  href="#footer">Contacto</a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-
         </div>
     </nav>
 
+<main class="main">
     <!--seccion Carrusel -->
     <section id="carrusel">
         <div id="carrusel-1" class="carousel slide carousel-fade">
@@ -117,27 +120,29 @@
         <h2 class="encabezado"><b>Todos los productos</b></h2>
         <hr>
         <div id="productos" class="productos">
-
         </div>
 
     </section>
 
+</main>
 
-<!--Footer-->
-    <footer class="footer">
+
+    <!--Footer-->
+    <footer class="footer" id="footer">
         <div class="contenedor-footer">
+            <h2 class="titulo-footer">SEGUINOS EN NUESTRAS REDES</h2>
             <div class="redes">
-                <h2 class="titulo-footer">Seguinos en nuestras redes</h2>
-                <a class="link-redes" href="https://www.instagram.com/vikabasicss/">Instagram</a>
-                <a class="link-redes" href="https://www.facebook.com/">Facebook</a>
-                <a class="link-redes" href="https://www.tiktok.com/">Tiktok</a>
+                <a class="link-redes link" href="https://www.instagram.com/vikabasicss/">INSTAGRAM</a>
+                <a class="link-redes link" href="https://www.facebook.com/">FACEBOOK</a>
+                <a class="link-redes link" href="https://www.tiktok.com/">TIKTOK</a>
             </div>
-            <divc class="footer-bottom">
-                <a href="#politicadeprivacidad">configuracion de cookies</a>
-                <a>Politica de privacidad</a>
-                <a>Condiciones de compra</a>
-
-        </div>
+            <div class="footer-bottom">
+                <a class="politicas link" href="#configuraciondecookies">CONFIGURACIÓN DE COOKIES</a>
+                <a class="politicas link" href="#politicadeprivacidad">POLÍTICAS DE PRIVACIDAD</a>
+                <a class="politicas link" href="#Condicionesdecompra">CONDICIONES DE COMPRA</a>
+                <a class="politicas link" href="#Condicionesdecompra">BOTON DE ARREPENTIMIENTO</a>
+            </div>
+        
         </div>
     </footer>
 
