@@ -1,5 +1,5 @@
 const btnIrCarrito = document.querySelector("button#ir-carrito")
-const btnRefesh = document.querySelector("#refesh")
+const btnTodosLosProductos = document.querySelector("#refesh")
 
 const productos = []
 const URL = "js/productos.json"
@@ -41,29 +41,13 @@ function cardProducto(producto) {
         </div>`
 }
 
-function sweatToast(mensaje, icono) {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-      })
-      
-      Toast.fire({
-        icon: icono,
-        title: mensaje
-
-      })
-}
-
 
 function agregarProductoCarrito(e) {
     const id = parseInt(e.currentTarget.id)
     const productoSeleccionado = productos.find((producto) => producto.id === id)
     carrito.agregarProducto(productoSeleccionado)
     sweatToast(`${productoSeleccionado.nombre} se agregó al carrito!`,'success')
-
+    lengthCarrito.innerHTML = `Carrito(${carrito.productosCarrito.length})`
 }
 
 function filtrarProductos(e) {
@@ -75,19 +59,13 @@ function filtrarProductos(e) {
     activarClick("button.boton-add", agregarProductoCarrito)
 }
 
- 
-
 
 //ejecutamos las funciones
 obtenerProductos()
 activarClick(".filtrar", filtrarProductos)
 
 //boton para ver todos los productos
-btnRefesh.addEventListener("click", () => location.reload())
-
-
-lengthCarrito.innerHTML = `Carrito(${carrito.productosCarrito.length})`
-
+btnTodosLosProductos.addEventListener("click", () => location.reload())
 
 
 

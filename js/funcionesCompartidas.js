@@ -2,10 +2,11 @@
 const contenedorCard = document.querySelector("#productos")
 const carrito = new Carrito()
 
+
 function errorDeCarga() {
     return `<div class="d-flex justify-content-center align-items-center" style="height:70vh;">
     <div>
-        <h5>No hay productos</h5>
+        <h2>No hay productos</h2>
     </div>
 </div>
 `
@@ -22,7 +23,8 @@ function cargarProductos(array, contenedor) {
         } else {
             contenedor.innerHTML = errorDeCarga()
         }
-    }
+}
+
 
 
 function activarClick(clase, funcion) {
@@ -31,6 +33,7 @@ function activarClick(clase, funcion) {
         boton.addEventListener("click", funcion)
     })
 }
+
 
 function sweatToast(mensaje, icono) {
     const Toast = Swal.mixin({

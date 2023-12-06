@@ -1,6 +1,6 @@
 class Carrito {
     constructor() {
-        this.productosCarrito = JSON.parse(localStorage.getItem("Carrito")) || [];
+        this.productosCarrito = JSON.parse(localStorage.getItem("Carrito")) || []
     }
 
     agregarProducto(producto) {
@@ -31,8 +31,7 @@ class Carrito {
         const contenidoHTML1 = nombresYPrecios.map(({ nombre, precio }) => `
         <ul>
         <hr>  
-       <li class ="lista">Producto: ${nombre}</li>
-       <li class ="lista">Precio: $${precio}</li>
+       <li class ="lista"><b>${nombre} -- $${precio}</b></li>
         </ul>`).join('')
 
         const resumenTotal = `
