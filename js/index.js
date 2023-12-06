@@ -8,7 +8,22 @@ const lengthCarrito = document.querySelector("#cantidad-carrito")
 const encabezado = document.querySelector(".encabezado")
 
 
-function cardHTML(producto) {
+
+async function obtenerProductos() {     
+     try {
+        const response = await fetch(URL)
+        const data = await response.json()
+        productos.push(...data)
+        cargarProductos(productos, contenedorCard)
+        activarClick("button.boton-add", agregarProductoCarrito)
+       }    
+       catch {
+        sweatToast(`¡Lo sentimos! Tuvimos problemas con cargar la pagina, intentelo de nuevo mas tarde.`,'error')
+       }
+}
+
+
+function cardProducto(producto) {
     return `<div class="carta-producto">
             <div class="img-producto">
                 <img src="${producto.imagen}"  alt="${producto.descripcion}">
@@ -29,7 +44,7 @@ function cardHTML(producto) {
 function sweatToast(mensaje, icono) {
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
@@ -58,23 +73,9 @@ function filtrarProductos(e) {
     encabezado.innerHTML = `${categoria}`
     cargarProductos(resultado, contenedorCard)
     activarClick("button.boton-add", agregarProductoCarrito)
-
-
 }
 
  
-async function obtenerProductos() {     
-     try {
-        const response = await fetch(URL)
-        const data = await response.json()
-        productos.push(...data)
-        cargarProductos(productos, contenedorCard)
-        activarClick("button.boton-add", agregarProductoCarrito)
-       }    
-       catch {
-        sweatToast(`¡Lo sentimos! Tuvimos problemas con cargar la pagina, intentelo de nuevo mas tarde.`,'error')
-       }
-}
 
 
 //ejecutamos las funciones

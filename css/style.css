@@ -133,6 +133,18 @@ button:hover {
 
 
 
+
+/*resumen de compra*/
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  
+
+
 @media screen and (max-width:767px) {
     .navbar {
         height: 100px;

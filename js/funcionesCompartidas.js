@@ -1,4 +1,4 @@
-//Funciones compartidas. 
+//Funciones compartidas
 const contenedorCard = document.querySelector("#productos")
 const carrito = new Carrito()
 
@@ -15,9 +15,9 @@ function cargarProductos(array, contenedor) {
         if (array && array.length > 0) {
             contenedor.innerHTML = ""
             if (contenedor === contenedorCard) {
-                array.forEach((producto) => contenedor.innerHTML += cardHTML(producto))
+                array.forEach((producto) => contenedor.innerHTML += cardProducto(producto))
             } else {
-                array.forEach((producto) => contenedor.innerHTML += cardHTMLCarrito(producto))
+                array.forEach((producto) => contenedor.innerHTML += cardProductoCarrito(producto))
             }
         } else {
             contenedor.innerHTML = errorDeCarga()
@@ -30,4 +30,20 @@ function activarClick(clase, funcion) {
     botonAccion.forEach((boton) => {
         boton.addEventListener("click", funcion)
     })
+}
+
+function sweatToast(mensaje, icono) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      })
+      
+      Toast.fire({
+        icon: icono,
+        title: mensaje
+
+      })
 }

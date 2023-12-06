@@ -2,8 +2,13 @@ const contenedorCarrito = document.querySelector("#contenedor-2")
 const totalCompra = document.querySelector("#total-compra")
 
 
-function cardHTMLCarrito (producto) {
-    return `<div class="carta-producto">
+function mostrarTotal () {
+   const total = carrito.obtenerTotal()
+   totalCompra.innerText = `Total(${carrito.productosCarrito.length}): $${total}`
+}
+
+function cardProductoCarrito(producto) {
+  return `<div class="carta-producto">
             <div class="img-producto">
                 <img src="${producto.imagen}"  alt="${producto.descripcion}">
             </div>
@@ -19,49 +24,59 @@ function cardHTMLCarrito (producto) {
         </div>`
 }
 
-function eliminarProducto (e) {
-    const id = parseInt(e.currentTarget.id)
-    const index = carrito.productosCarrito.findIndex(producto => producto.id === id)
-    carrito.eliminarProducto(index)
-    location.reload()
+function eliminarProducto(e) {
+  const id = parseInt(e.currentTarget.id)
+  const index = carrito.productosCarrito.findIndex(producto => producto.id === id)
+  carrito.eliminarProducto(index)
+  location.reload()
 }
 
-function finalizarCompra () {
-    Swal.fire({
-        title: 'Ultimo paso, confirma tu compra!',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Comprar',
-        cancelButtonText: 'Seguir comprando'
-      }).then((result) => {
-        if (result.isConfirmed) {
-            
-          Swal.fire(
-            '¡Tu compra se realizo con exito!',
-            'Gracias por elegirnos',
-            'VIKA'
-          )
-          carrito.vaciarCarrito()
-        }
-      })
-      
+function finalizarCompra() {
+if(carrito.productosCarrito.length != []) {
+
+  const contenidoHTML = carrito.resumenCarrito() 
+
+  Swal.fire({
+    title: 'Ultimo paso...¡Confirmá tu compra!',
+    html: contenidoHTML,
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Comprar',
+    cancelButtonText: 'Continuar comprando',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        '¡Tu compra se realizo con exito!',
+        'Gracias por elegirnos',
+        'VIKA'
+      )
+      carrito.vaciarCarrito()
+    }
+  })} else {
+
+  sweatToast('Debes agregar productos al carrito para finalizar la compra', 'error')
+
+ }
 }
+
+
 
 
 async function inciarCarrito() {
-    try {
-        cargarProductos(carrito.productosCarrito, contenedorCarrito)
-        carrito.obtenerTotal()
-        activarClick(".btn-delete", eliminarProducto)
-    }catch {
-        contenedorCarrito.innerHTML =  errorDeCarga()
-    }
+  try {
+    cargarProductos(carrito.productosCarrito, contenedorCarrito)
+    mostrarTotal()
+    activarClick(".btn-delete", eliminarProducto)
+    activarClick(".btn-comprar", finalizarCompra)
+
+  } catch {
+    contenedorCarrito.innerHTML = errorDeCarga()
+  }
 }
 
 inciarCarrito()
 
-activarClick("#btn-comprar",finalizarCompra)
 
 
 
