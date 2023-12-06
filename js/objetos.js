@@ -18,8 +18,7 @@ class Carrito {
     vaciarCarrito() {
         this.productosCarrito = []
         this.actualizarLocalStorage()
-        
-        location.reload()   
+        setTimeout(() => location.reload() , 2000)
     }
 
     obtenerTotal() {

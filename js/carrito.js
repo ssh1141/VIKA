@@ -29,7 +29,6 @@ function eliminarProducto (e) {
 function finalizarCompra () {
     Swal.fire({
         title: 'Ultimo paso, confirma tu compra!',
-        text: "Estas por comprar:",
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -47,10 +46,7 @@ function finalizarCompra () {
         }
       })
       
-
 }
-activarClick("#btn-comprar",finalizarCompra)
-
 
 
 async function inciarCarrito() {
@@ -59,15 +55,13 @@ async function inciarCarrito() {
         carrito.obtenerTotal()
         activarClick(".btn-delete", eliminarProducto)
     }catch {
-        contenedorCarrito.innerHTML =  `<div class="d-flex justify-content-center align-items-center" style="height:70vh;">
-        <div>
-            <h5>No hay productos</h5>
-        </div>
-    </div>
-    `
+        contenedorCarrito.innerHTML =  errorDeCarga()
     }
 }
+
 inciarCarrito()
+
+activarClick("#btn-comprar",finalizarCompra)
 
 
 

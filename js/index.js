@@ -1,7 +1,9 @@
 const btnIrCarrito = document.querySelector("button#ir-carrito")
 const btnRefesh = document.querySelector("#refesh")
+
 const productos = []
 const URL = "js/productos.json"
+
 const lengthCarrito = document.querySelector("#cantidad-carrito")
 const encabezado = document.querySelector(".encabezado")
 
@@ -55,9 +57,10 @@ function filtrarProductos(e) {
     contenedorCard.innerHTML = ""
     encabezado.innerHTML = `${categoria}`
     cargarProductos(resultado, contenedorCard)
-}
+    activarClick("button.boton-add", agregarProductoCarrito)
 
-activarClick(".filtrar", filtrarProductos)
+
+}
 
  
 async function obtenerProductos() {     
@@ -73,9 +76,15 @@ async function obtenerProductos() {
        }
 }
 
-obtenerProductos()
 
+//ejecutamos las funciones
+obtenerProductos()
+activarClick(".filtrar", filtrarProductos)
+
+//boton para ver todos los productos
 btnRefesh.addEventListener("click", () => location.reload())
+
+
 lengthCarrito.innerHTML = `Carrito(${carrito.productosCarrito.length})`
 
 
